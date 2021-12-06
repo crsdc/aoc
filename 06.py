@@ -18,20 +18,19 @@ for day in range(1, 81):
 
 print(len(fish))
 
-# Part 2, using a dictionary to keep track of how many fish have each timer value
+# Part 2, using a list to keep track of how many fish have each timer value
 
-fishcounts = dict.fromkeys([*range(9)])
-for key in range(9):
-    # Pick up already calculated values from day 80 rather than start again
-    fishcounts[key] = fish.count(key)
+fishcounts = [0] * 9
+for timer, count in enumerate(fishcounts):
+    fishcounts[timer] = fish.count(timer)
 
 for day in range(81, 257):
     # Note how many fish on 0 and move all fish down a day
     newfish = fishcounts[0]
-    for key in range(8):
-        fishcounts[key] = fishcounts[key + 1]
+    for timer in range(8):
+        fishcounts[timer] = fishcounts[timer + 1]
     # Add in the populations of new fish and reset fish previously on 0 to 6
     fishcounts[8] = newfish
     fishcounts[6] += newfish
 
-print(sum(fishcounts.values()))
+print(sum(fishcounts))
