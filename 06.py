@@ -25,12 +25,12 @@ for key in range(9):
     # Pick up already calculated values from day 80 rather than start again
     fishcounts[key] = fish.count(key)
 
-for day in range(81,257):
+for day in range(81, 257):
+    # Note how many fish on 0 and move all fish down a day
     newfish = fishcounts[0]
-    # Move all fish with non-zero timers down a day
-    for key in range(0,8):
+    for key in range(8):
         fishcounts[key] = fishcounts[key + 1]
-    # Add in the populations of new fish and reset fish with 0 to 6
+    # Add in the populations of new fish and reset fish previously on 0 to 6
     fishcounts[8] = newfish
     fishcounts[6] += newfish
 
