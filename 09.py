@@ -53,15 +53,14 @@ def checkaround(location):
         if grid[row][col + 1] != 9 and (row, col + 1) not in basin:
             checkaround((row, col + 1))
 
-basin = []
 basinsizes = []
 
 # Start a recursion from each known low point
 for location in minima:
+    basin = []
     checkaround(location)
-    # Once out of a recursion, log how many locations were in basin, then reset
+    # Once out of a recursion, log how many locations were in basin
     basinsizes.append(len(basin))
-    basin.clear()
 
 # Use the size of the three largest basins
 basinsizes.sort()
