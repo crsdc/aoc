@@ -38,7 +38,7 @@ def checkaround(location):
     # This location must be part of a basin, so add it to the list
     basin.append(location)
     row, col = location[0], location[1]
-    # Check each neighbour to see if it's on the edge, a 9, or already known
+    # Check each neighbour to see if it's off the edge, a 9, or already known
     # If none of those, check its neighbours to keep exploring the basin
     if row in range(1, 100):
         if grid[row - 1][col] != 9 and (row - 1, col) not in basin:
