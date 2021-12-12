@@ -16,6 +16,7 @@ routes = []
 
 def explorefrom(current, rule2status):
     visited.append(current)
+
     # Check each cave connected to current cave for a viable route
     for candidate in graph[current]:
 
@@ -38,14 +39,12 @@ def explorefrom(current, rule2status):
 
         # Else: this candidate is not allowed, so move on to the next
 
-    # Once all candidates checked, backtrack, but not beyond the start
-    if len(visited) > 1:
-        visited.pop()
+    # Once all candidates checked, backtrack
+    visited.pop()
 
 explorefrom('start', False)
 print(len(routes))
 
-visited.clear()
 routes.clear()
 explorefrom('start', True)
 print(len(routes))
