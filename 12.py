@@ -14,7 +14,7 @@ for connection in input:
 visited = []
 routes = []
 
-def explorefrom(current, rule2status = False):
+def explorefrom(current, rule2status):
     visited.append(current)
     # Check each cave connected to current cave for a viable route
     for candidate in graph[current]:
@@ -31,7 +31,7 @@ def explorefrom(current, rule2status = False):
         elif rule2status and candidate != 'start':
             # If this will be second visit, special rule can't apply beyond it
             if candidate in visited:
-                explorefrom(candidate)
+                explorefrom(candidate, False)
             else:
                 # No double visit yet so keep exploring with rule in place
                 explorefrom(candidate, True)
@@ -42,7 +42,7 @@ def explorefrom(current, rule2status = False):
     if len(visited) > 1:
         visited.pop()
 
-explorefrom('start')
+explorefrom('start', False)
 print(len(routes))
 
 visited.clear()
