@@ -36,6 +36,18 @@ class Round {
     Move.scissors: Move.paper,
   };
 
+  static const moveScore = {
+    Move.rock: 1,
+    Move.paper: 2,
+    Move.scissors: 3,
+  };
+
+  static const outcomeScore = {
+    Outcome.win: 6,
+    Outcome.draw: 3,
+    Outcome.lose: 0,
+  };
+
   setOutcome() {
     if (_playerMove == _opponentMove) {
       _outcome = Outcome.draw;
@@ -56,26 +68,6 @@ class Round {
     }
   }
 
-  int moveScore() {
-    if (_playerMove == Move.rock) {
-      return 1;
-    } else if (_playerMove == Move.paper) {
-      return 2;
-    } else { // scissors
-      return 3;
-    }
-  }
-
-  int outcomeScore() {
-    if (_outcome == Outcome.win) {
-      return 6;
-    } else if (_outcome == Outcome.draw) {
-      return 3;
-    } else { // lose
-      return 0;
-    }
-  }
-
   Round(String opponentMove, {String? playerMove, String? outcome}) {
     _opponentMove = opponentMap[opponentMove]!;
     if (outcome == null) {
@@ -86,12 +78,12 @@ class Round {
       _outcome = outcomeMap[outcome]!;
       setPlayerMove();
     }
-    score = moveScore() + outcomeScore();
+    score = moveScore[_playerMove]! + outcomeScore[_outcome]!;
   }
 }
 
 void main() {
-  final List<String> input = File('02data.txt').readAsLinesSync();
+  final List<String> input = File('./02data.txt').readAsLinesSync();
 
   // Part 1
   int score = 0;
