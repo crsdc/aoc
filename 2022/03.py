@@ -24,7 +24,7 @@ def findbadge(line):
             if char == char2:
                 for char3 in input[line + 2]:
                     if char == char3:
-                        return(priorityvalue(char))
+                        return priorityvalue(char)
 
 prioritysum = 0
 for line in input:
