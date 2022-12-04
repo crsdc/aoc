@@ -16,8 +16,8 @@ void main() {
         .map((e) => int.parse(e))
         .toList();
 
-    if ((bounds[0] >= bounds [2] && bounds[1] <= bounds[3]) ||
-        (bounds[2] >= bounds [0] && bounds[3] <= bounds[1])) {
+    if ((bounds[0] >= bounds[2] && bounds[1] <= bounds[3]) ||
+        (bounds[2] >= bounds[0] && bounds[3] <= bounds[1])) {
       fullyContained++;
     }
     if (max(bounds[0], bounds[2]) <= min(bounds[1], bounds[3])) {
