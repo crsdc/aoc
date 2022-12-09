@@ -4,6 +4,7 @@
 2021/15.py
 2022/07.dart
 *.run
+*data.txt
 **/ignored
 **/testdata.txt
 **/.vscode
